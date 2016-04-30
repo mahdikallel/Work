@@ -1,4 +1,4 @@
-package com.example.dmk.quizzproject;
+package com.example.dmk.workfinder;
 
 /**
  * Created by rahul.raja on 9/26/15.

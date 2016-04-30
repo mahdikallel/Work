@@ -1,6 +1,4 @@
-package com.example.dmk.quizzproject;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
+package com.example.dmk.workfinder;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -14,7 +12,6 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -34,7 +30,7 @@ import static android.widget.Toast.makeText;
 
 public class AuthentificationActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 2;
     private ViewPager mPager;
     private LinearLayout mIndicatorLayout;
     private TextView mIndicatorView[];
@@ -70,7 +66,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     // Third screen
     private boolean mShouldSpheresRotate = true;
-    private ThirdScreenView mRoundView;
+
 
     private boolean mThirdPageSelected;
     private Button mLetsGoButton;
@@ -208,9 +204,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
                 } else if (state == ViewPager.SCROLL_STATE_IDLE) {
                     mShouldSpheresRotate = true;
                 }
-                if (mRoundView != null) {
-                    mRoundView.setRotatingPermission(mShouldSpheresRotate);
-                }
 
                 if (mSelectedPosition == 0 && state == ViewPager.SCROLL_STATE_IDLE) {
                     mSecondPageSelected = false;
@@ -299,9 +292,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
             } else if (position <= 1) {
 
 
-                if (!mShouldSpheresRotate && page.findViewById(R.id.center_box_third) != null) {
-                    mRoundView.translateTheSpheres(position, pageWidth);
-                }
 
 
             } else {
@@ -388,7 +378,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
             }
             if (position == 2) {
 
-                initThirdScreenViews(rootView, savedInstanceState);
+                initSecondScreenViews(rootView, savedInstanceState);
             }
 
             return rootView;
@@ -404,9 +394,9 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
             } else if (position == 1) {
 
                 id = R.layout.second_screen;
-            } else if (position == 2) {
+            }else if (position == 2) {
 
-                id = R.layout.third_screen;
+                id = R.layout.second_screen;
             }
             return id;
         }
@@ -534,11 +524,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     private void initThirdScreenViews(View rootView, Bundle savedInstanceState) {
 
-        mRoundView = (ThirdScreenView) rootView.findViewById(R.id.round_view);
-        mLetsGoButton = (Button) rootView.findViewById(R.id.letsgo);
-
-        mLetsGoButton.setOnClickListener(clickListener);
-        mRoundView.setContext(this);
 
     }
 
@@ -548,11 +533,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
             switch (v.getId()) {
 
-                case R.id.letsgo:
-
-                    mRoundView.startNextScreen();
-
-                    break;
 
             }
 

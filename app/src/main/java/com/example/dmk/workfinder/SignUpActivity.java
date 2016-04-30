@@ -1,4 +1,4 @@
-package com.example.dmk.quizzproject;
+package com.example.dmk.workfinder;
 
 import android.content.Intent;
 import android.os.Bundle;

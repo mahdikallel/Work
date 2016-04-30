@@ -1,4 +1,4 @@
-package com.example.dmk.quizzproject;
+package com.example.dmk.workfinder;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

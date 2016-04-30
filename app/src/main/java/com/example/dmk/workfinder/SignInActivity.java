@@ -1,4 +1,4 @@
-package com.example.dmk.quizzproject;
+package com.example.dmk.workfinder;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,5 +12,5 @@ public class SignInActivity extends Activity {
     }
 
 
-    
+
 }

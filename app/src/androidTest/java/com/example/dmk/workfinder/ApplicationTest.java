@@ -1,4 +1,4 @@
-package com.example.dmk.quizzproject;
+package com.example.dmk.workfinder;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
