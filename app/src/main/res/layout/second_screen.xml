@@ -43,7 +43,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
 
-        <ImageView android:src="@mipmap/quizz"
+        <ImageView android:src="@mipmap/cartable"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
@@ -91,7 +91,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:background="@color/dots_color"
+            android:background="@color/editcord"
             android:text="Create an account"
             />
 
