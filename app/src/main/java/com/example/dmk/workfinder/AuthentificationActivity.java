@@ -2,6 +2,7 @@ package com.example.dmk.workfinder;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,10 +21,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseUser;
 
 import java.util.HashMap;
 
@@ -36,7 +43,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     private TextView mIndicatorView[];
     private Drawable mPagerBackground;
 
-
+    ProgressDialog progressDialog;
     private ImageView mCenterBox;
     private ImageView mCamcordImage;
     private ImageView mClockImage;
@@ -70,7 +77,8 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     private boolean mThirdPageSelected;
     private Button mLetsGoButton;
-
+   private  EditText uname ;
+    private EditText pwd;
     private Button btnSignUp;
     private Button btnSignIn;
 
@@ -84,16 +92,101 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     }
 
+    public void onLoginFailed() {
+        Toast.makeText(getBaseContext(), "Invalide Authentification", Toast.LENGTH_LONG).show();
+
+        btnSignIn.setEnabled(true);
+    }
+
+    public boolean validate() {
+        boolean valid = true;
+
+        uname=(EditText)findViewById(R.id.input_username);
+        pwd=(EditText)findViewById(R.id.input_password);
+        if (uname.getText().toString().isEmpty()) {
+            uname.setError("Invalid Reference");
+            valid = false;
+        } else {
+            uname.setError(null);
+        }
+
+        if (pwd.getText().toString().isEmpty()) {
+            pwd.setError("Invalide Password");
+            valid = false;
+        } else {
+            pwd.setError(null);
+        }
+
+        return valid;
+    }
+    public void login() {
+        Log.d("888", "Login");
+
+        if (!validate()) {
+            onLoginFailed();
+            return;
+        }
+
+        btnSignIn.setEnabled(false);
+
+       // progressDialog = new ProgressDialog(this);
+        //progressDialog.setIndeterminate(true);
+
+ //       progressDialog.setMessage("Execute...");
+   //     progressDialog.show();
+
+//        String ref = _refText.getText().toString();
+//        String pass = _passText.getText().toString();
+
+        try {
+            onLoginSuccess(uname.getText().toString(), pwd.getText().toString());
+        } catch (com.parse.ParseException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void onLoginSuccess(String login, String pwd) throws com.parse.ParseException {
+  Log.v("--login ",login);
+   Log.v("--pwd",pwd);
+        btnSignIn.setEnabled(true);
+        ParseUser.logInInBackground(login, pwd, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, com.parse.ParseException e) {
+
+
+                if (e == null && user != null) {
+
+//
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//
+//                    progressDialog.dismiss();
+//                    startActivity(intent);
+//                    finish();
+                    Log.v("login----->"," succes ");
+
+                } else if (user == null) {
+                 // Toast.makeText(LoginActivity.this, "Reference or Password invalide", Toast.LENGTH_LONG).show();
+                    Log.v("login----->"," nopeee !");
+
+                 //   progressDialog.dismiss();
+                }
+
+
+            }
+
+        });
+
+
+    }
 
     @Override
     public void onClick(View v) {
         Intent i = null;
         switch (v.getId()) {
-            // case R.id.btnSingIn: //Pour authentifier via parse back for app
-            ////  i = new Intent(getApplicationContext(),SignInActivity.class);
-            //  startActivity(i);
-            //   break;
-            case R.id.btnSignUp:
+             case R.id.btnSingIn: //Pour authentifier via parse back for app
+                login();
+             case R.id.btnSignUp:
                 i = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(i);
                 break;
