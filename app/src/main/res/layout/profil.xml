@@ -43,6 +43,7 @@
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,21 +55,27 @@
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
-
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             card_view:cardCornerRadius="4dp">
+
             <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="1270dp"
+                android:background="@color/app">
+
 
                 <ListView
                     android:id="@+id/listView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@color/app"/>
-
+</RelativeLayout>
             </android.support.v7.widget.LinearLayoutCompat>
 
 
@@ -99,7 +106,7 @@
         />
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:background="@color/editcord">
 
     </ScrollView>
