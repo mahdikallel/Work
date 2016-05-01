@@ -69,7 +69,8 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
         p.setEmail(email.getText().toString());
         p.setUsername(login.getText().toString());
         p.setPassword(pwd.getText().toString());
-
+        p.put("fname",fname.getText().toString());
+        p.put("lname",lname.getText().toString());
         p.put("work",work.getText().toString());
 
         p.signUpInBackground(new SignUpCallback() {

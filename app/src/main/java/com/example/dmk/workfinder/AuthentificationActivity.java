@@ -86,6 +86,12 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(ParseUser.getCurrentUser()!= null)
+        {
+            Intent intent = new Intent(getApplicationContext(), Profil.class);
+            startActivity(intent);
+            finish();
+        }
 
         setUpViews();
 
@@ -129,11 +135,11 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
         btnSignIn.setEnabled(false);
 
-       // progressDialog = new ProgressDialog(this);
-        //progressDialog.setIndeterminate(true);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setIndeterminate(true);
 
- //       progressDialog.setMessage("Execute...");
-   //     progressDialog.show();
+        progressDialog.setMessage("Execute...");
+        progressDialog.show();
 
 //        String ref = _refText.getText().toString();
 //        String pass = _passText.getText().toString();
@@ -157,19 +163,19 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
                 if (e == null && user != null) {
 
-//
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//
-//                    progressDialog.dismiss();
-//                    startActivity(intent);
-//                    finish();
+
+                    Intent inte = new Intent(getApplicationContext(), Profil.class);
+
+                    progressDialog.dismiss();
+                    startActivity(inte);
+                    finish();
                     Log.v("login----->"," succes ");
 
                 } else if (user == null) {
-                 // Toast.makeText(LoginActivity.this, "Reference or Password invalide", Toast.LENGTH_LONG).show();
+                  //Toast.makeText(AuthentificationActivity.this, "Reference or Password invalide", Toast.LENGTH_LONG).show();
                     Log.v("login----->"," nopeee !");
 
-                 //   progressDialog.dismiss();
+                 progressDialog.dismiss();
                 }
 
 
@@ -182,12 +188,13 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View v) {
-        Intent i = null;
+
         switch (v.getId()) {
              case R.id.btnSingIn: //Pour authentifier via parse back for app
                 login();
+                 break;
              case R.id.btnSignUp:
-                i = new Intent(getApplicationContext(), SignUpActivity.class);
+              Intent  i = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(i);
                 break;
         }
