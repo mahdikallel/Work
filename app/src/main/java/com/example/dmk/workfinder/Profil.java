@@ -50,7 +50,16 @@ public class Profil extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.profil);
         workList.clear();
         workList.add("Génie Logiciel");
+        workList.add("Réseaux Informatique");
+        workList.add("Réseaux Mobile");
+        workList.add("System Embarqué");
+        workList.add("Informatique Industrielle ");
+        workList.add("Electrique");
+        workList.add("Electromécanique");
         workList.add("Mecanique");
+        workList.add("Economie");
+
+
         fab = (FloatingActionButton) findViewById(R.id.fabcord);
         fab.setOnClickListener(this);
         mListView = (ListView) findViewById(R.id.listView);
@@ -58,7 +67,7 @@ public class Profil extends AppCompatActivity implements View.OnClickListener {
         mListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-              //  Toast.makeText(getApplicationContext(), "df" + id, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(), "df" + id, Toast.LENGTH_SHORT).show();
 
                 pos_domain = position;
 

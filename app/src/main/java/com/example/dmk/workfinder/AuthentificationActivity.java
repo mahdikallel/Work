@@ -56,8 +56,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     private AnimatorSet mAnimatorSet;
 
 
-
-
     private boolean mSecondPageSelected;
     private HashMap<ImageView, Float> mOriginalXValuesMap = new HashMap<>();
     private int mSelectedPosition = -1;
@@ -77,7 +75,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
     private boolean mThirdPageSelected;
     private Button mLetsGoButton;
-   private  EditText uname ;
+    private EditText uname;
     private EditText pwd;
     private Button btnSignUp;
     private Button btnSignIn;
@@ -86,8 +84,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(ParseUser.getCurrentUser()!= null)
-        {
+        if (ParseUser.getCurrentUser() != null) {
             Intent intent = new Intent(getApplicationContext(), Profil.class);
             startActivity(intent);
             finish();
@@ -107,8 +104,8 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     public boolean validate() {
         boolean valid = true;
 
-        uname=(EditText)findViewById(R.id.input_username);
-        pwd=(EditText)findViewById(R.id.input_password);
+        uname = (EditText) findViewById(R.id.input_username);
+        pwd = (EditText) findViewById(R.id.input_password);
         if (uname.getText().toString().isEmpty()) {
             uname.setError("Invalid Reference");
             valid = false;
@@ -125,6 +122,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
         return valid;
     }
+
     public void login() {
         Log.d("888", "Login");
 
@@ -152,9 +150,10 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
 
 
     }
+
     public void onLoginSuccess(String login, String pwd) throws com.parse.ParseException {
-  Log.v("--login ",login);
-   Log.v("--pwd",pwd);
+        Log.v("--login ", login);
+        Log.v("--pwd", pwd);
         btnSignIn.setEnabled(true);
         ParseUser.logInInBackground(login, pwd, new LogInCallback() {
             @Override
@@ -169,13 +168,13 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
                     progressDialog.dismiss();
                     startActivity(inte);
                     finish();
-                    Log.v("login----->"," succes ");
+                    Log.v("login----->", " succes ");
 
                 } else if (user == null) {
-                  //Toast.makeText(AuthentificationActivity.this, "Reference or Password invalide", Toast.LENGTH_LONG).show();
-                    Log.v("login----->"," nopeee !");
+                    //Toast.makeText(AuthentificationActivity.this, "Reference or Password invalide", Toast.LENGTH_LONG).show();
+                    Log.v("login----->", " nopeee !");
 
-                 progressDialog.dismiss();
+                    progressDialog.dismiss();
                 }
 
 
@@ -190,11 +189,11 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
     public void onClick(View v) {
 
         switch (v.getId()) {
-             case R.id.btnSingIn: //Pour authentifier via parse back for app
+            case R.id.btnSingIn: //Pour authentifier via parse back for app
                 login();
-                 break;
-             case R.id.btnSignUp:
-              Intent  i = new Intent(getApplicationContext(), SignUpActivity.class);
+                break;
+            case R.id.btnSignUp:
+                Intent i = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(i);
                 break;
         }
@@ -392,8 +391,6 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
             } else if (position <= 1) {
 
 
-
-
             } else {
 
             }
@@ -494,7 +491,7 @@ public class AuthentificationActivity extends AppCompatActivity implements View.
             } else if (position == 1) {
 
                 id = R.layout.second_screen;
-            }else if (position == 2) {
+            } else if (position == 2) {
 
                 id = R.layout.second_screen;
             }

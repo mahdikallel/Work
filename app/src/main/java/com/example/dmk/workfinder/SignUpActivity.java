@@ -23,12 +23,13 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
     private EditText login;
     private EditText pwd;
     private EditText work;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_screen);
-        mBack =(Button)findViewById(R.id.btn_back);
-        mCreate =(Button)findViewById(R.id.btn_register);
+        mBack = (Button) findViewById(R.id.btn_back);
+        mCreate = (Button) findViewById(R.id.btn_register);
         mCreate.setOnClickListener(this);
         mBack.setOnClickListener(this);
 
@@ -38,47 +39,47 @@ public class SignUpActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_back:
                 backToSignIn();
             case R.id.btn_register:
                 register();
-        break;
+                break;
         }
 
 
     }
-    private void backToSignIn(){
-        Intent i= new Intent(getApplicationContext(),AuthentificationActivity.class);
+
+    private void backToSignIn() {
+        Intent i = new Intent(getApplicationContext(), AuthentificationActivity.class);
         startActivity(i);
         finish();
     }
 
-    private void register()
-    {
+    private void register() {
 
-        Log.v("----->"," REgisterrrr");
+        Log.v("----->", " REgisterrrr");
         ParseUser p = new ParseUser();
-        fname=(EditText)findViewById(R.id.input_first_name);
-        lname=(EditText)findViewById(R.id.input_last_name);
-        email=(EditText)findViewById(R.id.input_email);
-        login=(EditText)findViewById(R.id.input_login);
-        pwd=(EditText)findViewById(R.id.input_password);
-        work=(EditText)findViewById(R.id.work);
+        fname = (EditText) findViewById(R.id.input_first_name);
+        lname = (EditText) findViewById(R.id.input_last_name);
+        email = (EditText) findViewById(R.id.input_email);
+        login = (EditText) findViewById(R.id.input_login);
+        pwd = (EditText) findViewById(R.id.input_password);
+        work = (EditText) findViewById(R.id.work);
 
         p.setEmail(email.getText().toString());
         p.setUsername(login.getText().toString());
         p.setPassword(pwd.getText().toString());
-        p.put("fname",fname.getText().toString());
-        p.put("lname",lname.getText().toString());
-        p.put("work",work.getText().toString());
+        p.put("fname", fname.getText().toString());
+        p.put("lname", lname.getText().toString());
+        p.put("work", work.getText().toString());
 
         p.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                     // Hooray! Let them use the app now.
                 } else {
-                   e.getMessage();
+                    e.getMessage();
                 }
             }
         });

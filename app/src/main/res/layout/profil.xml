@@ -78,7 +78,7 @@
 </RelativeLayout>
             </android.support.v7.widget.LinearLayoutCompat>
 
-
+            <include layout="@layout/content" />
         </android.support.v7.widget.CardView>
 
 
@@ -111,6 +111,5 @@
 
     </ScrollView>
 
-    <include layout="@layout/content" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -7,7 +7,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_gravity="center"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="5dp"
         card_view:cardCornerRadius="2dp"
@@ -44,7 +44,7 @@
 
         android:layout_below="@id/edit_name"
 
-        android:text="Offres d'emploi et de formation en Tunisie: Candidats Trouver un travail, poster CV. Centre d'appel, Industrie, services, commerce, informatique, recherche."
+
         android:layout_marginTop="30dp"
         android:layout_marginLeft="@dimen/dimen_20"
         android:textSize="@dimen/dimen_15"
@@ -66,9 +66,9 @@
         android:id="@+id/fragment_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="@android:string/ok"
-        android:layout_below="@id/offre_emploi"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
