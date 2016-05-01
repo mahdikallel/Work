@@ -24,5 +24,6 @@
     <color name="white">#ffffff</color>
 
     <color name="editcord">#E2572E</color>
-    <color name="app">#009688</color>
+    <color name="app">#4DB6AC</color>
+    <color name="bar">#00695C</color>
 </resources>

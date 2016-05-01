@@ -1,5 +1,6 @@
 package com.example.dmk.workfinder;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -18,11 +19,11 @@ public class Profil extends AppCompatActivity implements View.OnClickListener {
     ListView mListView;
     FloatingActionButton fab;
     String[] prenoms = new String[]{
-            "Antoine", "Benoit", "Cyril", "David", "Eloise", "Florent",
-            "Gerard", "Hugo", "Ingrid", "Jonathan", "Kevin", "Logan",
-            "Mathieu", "Noemie", "Olivia", "Philippe", "Quentin", "Romain",
-            "Sophie", "Tristan", "Ulric", "Vincent", "Willy", "Xavier",
-            "Yann", "Zoé"
+            "Génie Logiciel ", "Réseaux Informatique", "Réseaux Mobile", "System Embarqué", "Informatique Industrielle ", "Mécanique",
+            "Electrique", "Electromécanique", "Mathématique", "Histoire", "Lettre", "Economie",
+            "Gestion", "Santé", "Médecine", "Dentaire", "Biologique", "Romain",
+            "Consulting", "Management", "Hotellerie", "Free Lance", "Production", "Statisqtique",
+            "Administration", "Architecture"
     };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class Profil extends AppCompatActivity implements View.OnClickListener {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(Profil.this,
                 android.R.layout.simple_list_item_1, prenoms);
         mListView.setAdapter(adapter);
-        
+
     }
 
     @Override
